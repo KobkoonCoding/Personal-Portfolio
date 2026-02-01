@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Hash Generator</title>
+</head>
+<body>
+    <h1>Generate Password Hash</h1>
+    <input type="text" id="password" value="admin123" placeholder="Enter password">
+    <button onclick="generateHash()">Generate Hash</button>
+    <p>Hash: <code id="hash"></code></p>
+    
+    <script>
+        async function generateHash() {
+            const password = document.getElementById('password').value;
+            const msgUint8 = new TextEncoder().encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            document.getElementById('hash').textContent = hash;
+            console.log('Password:', password);
+            console.log('Hash:', hash);
+        }
+        
+        // Auto-generate on load
+        window.onload = generateHash;
+    </script>
+</body>
+</html>

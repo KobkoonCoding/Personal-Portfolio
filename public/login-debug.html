@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login Debugger</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a2e;
+            color: #fff;
+        }
+
+        button {
+            background: #e94560;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #c23b52;
+        }
+
+        .output {
+            background: #16213e;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+
+        input {
+            padding: 10px;
+            width: 300px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background: #0f3460;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🔐 Admin Login Debugger</h1>
+
+    <h2>1. Generate Hash</h2>
+    <input type="text" id="password" value="admin123" placeholder="Enter password">
+    <button onclick="generateHash()">Generate Hash</button>
+    <div class="output" id="hashOutput"></div>
+
+    <h2>2. Check LocalStorage</h2>
+    <button onclick="checkLocalStorage()">Check Storage</button>
+    <div class="output" id="storageOutput"></div>
+
+    <h2>3. Clear & Reset</h2>
+    <button onclick="clearStorage()">Clear All Storage</button>
+    <button onclick="setDefaultHash()">Set Default Hash</button>
+    <div class="output" id="resetOutput"></div>
+
+    <h2>4. Test Login</h2>
+    <input type="password" id="testPassword" value="admin123" placeholder="Test password">
+    <button onclick="testLogin()">Test Login</button>
+    <div class="output" id="loginOutput"></div>
+
+    <script>
+        async function hashPassword(password) {
+            const msgUint8 = new TextEncoder().encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function generateHash() {
+            const password = document.getElementById('password').value;
+            const hash = await hashPassword(password);
+            document.getElementById('hashOutput').innerHTML = `
+                <strong>Password:</strong> ${password}<br>
+                <strong>Hash:</strong> ${hash}
+            `;
+        }
+
+        function checkLocalStorage() {
+            const stored = localStorage.getItem('adminPasswordHash');
+            const isLoggedIn = localStorage.getItem('isAdminLoggedIn');
+            document.getElementById('storageOutput').innerHTML = `
+                <strong>adminPasswordHash:</strong> ${stored || 'NOT SET'}<br>
+                <strong>isAdminLoggedIn:</strong> ${isLoggedIn || 'false'}
+            `;
+        }
+
+        function clearStorage() {
+            localStorage.removeItem('adminPasswordHash');
+            localStorage.removeItem('isAdminLoggedIn');
+            document.getElementById('resetOutput').innerHTML = '✅ Storage cleared!';
+            checkLocalStorage();
+        }
+
+        async function setDefaultHash() {
+            const defaultHash = await hashPassword('admin123');
+            localStorage.setItem('adminPasswordHash', defaultHash);
+            document.getElementById('resetOutput').innerHTML = `✅ Default hash set: ${defaultHash}`;
+            checkLocalStorage();
+        }
+
+        async function testLogin() {
+            const password = document.getElementById('testPassword').value;
+            const inputHash = await hashPassword(password);
+            const storedHash = localStorage.getItem('adminPasswordHash');
+            const defaultHash = await hashPassword('admin123');
+            const hashToCompare = storedHash || defaultHash;
+            const match = inputHash === hashToCompare;
+
+            document.getElementById('loginOutput').innerHTML = `
+                <strong>Input Password:</strong> ${password}<br>
+                <strong>Input Hash:</strong> ${inputHash}<br>
+                <strong>Stored Hash:</strong> ${storedHash || 'NOT SET (using default)'}<br>
+                <strong>Default Hash:</strong> ${defaultHash}<br>
+                <strong>Comparing with:</strong> ${hashToCompare}<br>
+                <strong>Match:</strong> ${match ? '✅ YES' : '❌ NO'}<br>
+                <strong>Result:</strong> ${match ? '✅ LOGIN SUCCESS' : '❌ LOGIN FAILED'}
+            `;
+        }
+
+        // Auto-run on load
+        window.onload = () => {
+            generateHash();
+            checkLocalStorage();
+        };
+    </script>
+</body>
+
+</html>

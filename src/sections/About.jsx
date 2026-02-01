@@ -4,14 +4,16 @@ import { Globe } from "../components/Globe";
 import CopyEmailButton from "../components/CopyEmailButton";
 import { Frameworks } from "../components/Frameworks";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
   const grid2Container = useRef();
   const [sectionRef, isVisible] = useScrollReveal({ threshold: 0.1, once: true });
 
   return (
     <section id="about" className="c-space section-spacing">
-      <h2 className="text-heading ">About Me</h2>
+      <h2 className="text-heading ">{t('about.title')}</h2>
       <div
         ref={sectionRef}
         className={`grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12 scroll-reveal ${isVisible ? 'visible' : ''}`}
@@ -27,10 +29,9 @@ const About = () => {
             md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5]"
           />
           <div className="z-10">
-            <p className="headtext">Hi I'm Kasam</p>
+            <p className="headtext">{t('hero.greeting')}</p>
             <p className="subtext">
-              Over the last 4 years, I developed my frontend and backend dev
-              skills to deliver dynamic and software and web applications.
+              {t('about.bio')}
             </p>
           </div>
           <div
@@ -45,46 +46,46 @@ const About = () => {
             className="flex items-center justify-center w-full h-full"
           >
             <p className="flex items-end text-5xl text-gray-500">
-              VX CODE CRAFT
+              {t('about.academicExcellence')}
             </p>
             <Card
               style={{ rotate: "75deg", top: "30%", left: "20%" }}
-              text="GRASP"
+              text="Convex Analysis"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "-30deg", top: "60%", left: "45%" }}
-              text="React"
+              text="Fixed Point Theory"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "90deg", bottom: "30%", left: "75%" }}
-              text="Nextjs"
+              text="Optimization"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "-45deg", top: "55%", left: "0%" }}
-              text="Design Principles"
+              text="Image Processing"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "20deg", top: "10%", left: "38%" }}
-              text="SRP"
+              text="Machine Learning"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "30deg", top: "70%", left: "70%" }}
-              image="assets/logos/csharp-pink.png"
+              text="Deep Learning"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "-45deg", top: "70%", left: "25%" }}
-              image="assets/logos/dotnet-pink.png"
+              text="Python"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "-45deg", top: "5%", left: "10%" }}
-              image="assets/logos/blazor-pink.png"
+              text="Data Prediction"
               containerRef={grid2Container}
             />
           </div>
@@ -92,9 +93,9 @@ const About = () => {
         {/* Grid 3 */}
         <div className="grid-black-color grid-3">
           <div className="z-10 w-[50%]">
-            <p className="headtext">Time Zone</p>
+            <p className="headtext">{t('about.location')}</p>
             <p className="subtext">
-              I am currently based in the UK, and open to work
+              {t('about.locationDetail')}
             </p>
           </div>
           <figure className="absolute left-[30%] top-[10%]">
@@ -105,7 +106,7 @@ const About = () => {
         <div className="grid-special-color grid-4">
           <div className="flex flex-col items-center justify-center gap-5 size-full">
             <p className="text-center headtext">
-              Do You want to Start a Project Together?
+              {t('about.startProject')}
               <CopyEmailButton />
             </p>
           </div>
@@ -113,10 +114,9 @@ const About = () => {
         {/* Grid 5 */}
         <div className="grid-default-color grid-5">
           <div className="z-1 w-[50%]">
-            <p className="headtext">Tech Stack</p>
+            <p className="headtext">{t('about.researchTools')}</p>
             <p className="subtext">
-              I specialize in a variety of languages, frameworks, and tools that
-              allow me to build robust and scalable applications
+              {t('about.researchToolsDetail')}
             </p>
           </div>
 

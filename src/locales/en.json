@@ -1,0 +1,133 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "work": "Work",
+    "contact": "Contact",
+    "admin": "Admin"
+  },
+  "hero": {
+    "greeting": "Hi I'm Dr. Kobkoon Janngam",
+    "expertIn": "Researcher &",
+    "expertInSub": "Expert in",
+    "advancing": "Advancing",
+    "researchFields": "Research Fields",
+    "words": [
+      "Mathematics",
+      "Optimization",
+      "Machine Learning"
+    ]
+  },
+  "about": {
+    "title": "About Me",
+    "bio": "I am a proactive researcher at Chiang Mai University with a PhD in Mathematics. My expertise lies in Nonlinear and Convex Analysis, Fixed Point Theory, and their applications in Machine Learning and Image Processing.",
+    "academicExcellence": "ACADEMIC EXCELLENCE",
+    "location": "Location",
+    "locationDetail": "I am currently based in Chiang Mai, Thailand, at Chiang Mai University.",
+    "startProject": "Do You want to Start a Project Together?",
+    "researchTools": "Research Tools",
+    "researchToolsDetail": "I utilize a variety of programming languages and mathematical tools to solve optimization problems and develop machine learning algorithms."
+  },
+  "contact": {
+    "title": "Academic Inquiry",
+    "subtitle": "For research collaborations, academic questions, or professional consultations, please feel free to reach out. I look forward to connecting with you.",
+    "nameLabel": "Full Name",
+    "namePlaceholder": "Dr. John Doe",
+    "emailLabel": "Email",
+    "emailPlaceholder": "colleague@university.edu",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Describe your research inquiry or professional request",
+    "sendButton": "Send Message",
+    "sendingButton": "Sending..."
+  },
+  "common": {
+    "success": "Success",
+    "error": "Error",
+    "sentSuccess": "Your message has been sent!",
+    "sentError": "Something went wrong!",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page",
+    "of": "of"
+  },
+  "activities": {
+    "title": "Important Activities",
+    "viewAll": "View All Activities",
+    "exploreAll": "Explore all records",
+    "seeMore": "See More Activities",
+    "readMore": "Read More",
+    "overview": "Activity Overview",
+    "eventHighlights": "Event Highlights",
+    "keyDetails": "Key Details",
+    "techTags": "Technologies & Tags",
+    "backToHome": "Back to Home",
+    "backToPortfolio": "Back to Portfolio",
+    "publishedOn": "Published on",
+    "eventDate": "Event Date",
+    "notFound": "Activity not found",
+    "viewProjectSite": "View Project Site"
+  },
+  "experiences": [
+    {
+      "title": "Proactive Researcher",
+      "job": "Chiang Mai University",
+      "date": "2024 - Present",
+      "contents": [
+        "Conducting advanced research in Nonlinear and Convex Analysis.",
+        "Developing novel algorithms for Optimization and Fixed Point Theory.",
+        "Collaborating on international research projects, including short-term research in Japan."
+      ]
+    },
+    {
+      "title": "PhD in Mathematics",
+      "job": "Chiang Mai University",
+      "date": "2020 - 2024",
+      "contents": [
+        "Focused on advanced mathematical modeling and algorithm development.",
+        "Published multiple high-impact papers in international journals (Q1/Q2).",
+        "Gained expertise in Machine Learning and Deep Learning applications."
+      ]
+    },
+    {
+      "title": "Teaching Assistant in Calculus",
+      "job": "Chiang Mai University",
+      "date": "2019 - 2024",
+      "contents": [
+        "Assisted in teaching Calculus to undergraduate students.",
+        "Provided academic support and led tutorial sessions.",
+        "Managed classroom activities and graded assignments."
+      ]
+    },
+    {
+      "title": "Short-term Researcher",
+      "job": "Niigata University, Japan",
+      "date": "Sep 2023 & Sep 2024",
+      "contents": [
+        "Participated in international research exchanges focused on complex analysis.",
+        "Presented research findings at ICNS2024 and other international forums.",
+        "Collaborated with international experts in the field of mathematics."
+      ]
+    }
+  ],
+  "admin": {
+    "login": "Admin Login",
+    "dashboard": "Dashboard",
+    "logout": "Logout",
+    "addNew": "Add New Activity",
+    "edit": "Edit Activity",
+    "save": "Save Changes",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "title": "Title",
+    "date": "Date",
+    "description": "Description",
+    "images": "Images",
+    "uploadImages": "Upload Images",
+    "preview": "Preview",
+    "keyDetails": "Key Details",
+    "onePerLine": "One per line",
+    "mainThumbnail": "Main Thumbnail",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
+  }
+}

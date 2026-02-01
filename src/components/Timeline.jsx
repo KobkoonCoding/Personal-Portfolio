@@ -1,8 +1,9 @@
-"use client";
 import { useScroll, useTransform, motion } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const Timeline = ({ data }) => {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const containerRef = useRef(null);
   const [height, setHeight] = useState(0);
@@ -23,8 +24,7 @@ export const Timeline = ({ data }) => {
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <div className="c-space section-spacing" ref={containerRef}>
-      <h2 className="text-heading">My Work Experience</h2>
+    <div className="w-full" ref={containerRef}>
       <div ref={ref} className="relative pb-20 mx-auto">
         {data.map((item, index) => (
           <div

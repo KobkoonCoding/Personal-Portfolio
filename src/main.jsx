@@ -1,12 +1,18 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import "./index.css";
+import "./i18n";
 import App from "./App.jsx";
-import Navbar from "./sections/Navbar.jsx";
+import { AdminProvider } from "./context/AdminContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Navbar />
-    <App />
+    <BrowserRouter>
+      <AdminProvider>
+        <App />
+      </AdminProvider>
+    </BrowserRouter>
   </StrictMode>
 );
+

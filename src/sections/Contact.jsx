@@ -2,10 +2,12 @@ import { useState } from "react";
 import Alert from "../components/Alert";
 import { Particles } from "../components/Particles";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { useTranslation } from "react-i18next";
 
 const WEB3FORMS_ACCESS_KEY = "b858e62d-4977-4c34-80b2-3955129ea0e5";
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -48,13 +50,13 @@ const Contact = () => {
 
       if (result.success) {
         setFormData({ name: "", email: "", message: "" });
-        showAlertMessage("success", "Your message has been sent!");
+        showAlertMessage("success", t('common.sentSuccess'));
       } else {
-        throw new Error(result.message || "Something went wrong");
+        throw new Error(result.message || t('common.sentError'));
       }
     } catch (error) {
       console.error(error);
-      showAlertMessage("danger", "Something went wrong!");
+      showAlertMessage("danger", t('common.sentError'));
     } finally {
       setIsLoading(false);
     }
@@ -75,23 +77,22 @@ const Contact = () => {
         className={`flex flex-col items-center justify-center max-w-md p-5 mx-auto border border-white/10 rounded-2xl bg-primary scroll-reveal ${isVisible ? 'visible' : ''}`}
       >
         <div className="flex flex-col items-start w-full gap-5 mb-10">
-          <h2 className="text-heading"> Lets Talk </h2>
+          <h2 className="text-heading"> {t('contact.title')} </h2>
           <p className="font-normal text-neutral-400">
-            Whether You're Looking to build a new Website, or a Existing
-            Platform, or to bring a project to life, <br /> I'm here to help.
+            {t('contact.subtitle')}
           </p>
         </div>
         <form className="w-full" onSubmit={handleSubmit}>
           <div className="mb-5">
             <label htmlFor="name" className="field-label">
-              Full Name
+              {t('contact.nameLabel')}
             </label>
             <input
               id="name"
               name="name"
               type="text"
               className="field-input field-input-focus"
-              placeholder="Violet"
+              placeholder={t('contact.namePlaceholder')}
               autoComplete="name"
               value={formData.name}
               onChange={handleChange}
@@ -101,14 +102,14 @@ const Contact = () => {
 
           <div className="mb-5">
             <label htmlFor="name" className="field-label">
-              Email
+              {t('contact.emailLabel')}
             </label>
             <input
               id="email"
               name="email"
               type="email"
               className="field-input field-input-focus"
-              placeholder="Violet@gmail.com"
+              placeholder={t('contact.emailPlaceholder')}
               autoComplete="name"
               value={formData.email}
               onChange={handleChange}
@@ -118,7 +119,7 @@ const Contact = () => {
 
           <div className="mb-5">
             <label htmlFor="name" className="field-label">
-              Message
+              {t('contact.messageLabel')}
             </label>
             <textarea
               id="message"
@@ -126,7 +127,7 @@ const Contact = () => {
               type="message"
               rows={4}
               className="field-input field-input-focus"
-              placeholder="Share your thoughts"
+              placeholder={t('contact.messagePlaceholder')}
               autoComplete="name"
               value={formData.message}
               onChange={handleChange}
@@ -137,7 +138,7 @@ const Contact = () => {
             type="submit"
             className="w-full px-1 py-3 text-center rounded-md cursor-pointer bg-radial from-lavender hover-animation"
           >
-            {!isLoading ? "send" : "Sending..."}
+            {!isLoading ? t('contact.sendButton') : t('contact.sendingButton')}
           </button>
         </form>
       </div>
