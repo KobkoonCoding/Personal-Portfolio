@@ -11,10 +11,12 @@ import ActivityDetail from "./pages/ActivityDetail";
 import AllActivities from "./pages/AllActivities";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import MusicPlayer from "./components/MusicPlayer";
 
 const App = () => {
   return (
     <div className="container mx-auto max-w-7xl">
+      <MusicPlayer />
       <Navbar />
       <Routes>
         <Route path="/" element={

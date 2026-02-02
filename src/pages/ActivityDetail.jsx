@@ -132,8 +132,7 @@ const ActivityDetail = () => {
                             <h2 className="text-xl font-semibold text-white mb-4 border-b border-white/10 pb-2">{t('activities.techTags')}</h2>
                             <div className="flex flex-wrap gap-2">
                                 {activity.tags && activity.tags.map((tag) => (
-                                    <div key={tag.id} className="flex items-center bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-300">
-                                        <img src={tag.path} alt={tag.name_en || tag.name} className="w-4 h-4 mr-2" />
+                                    <div key={tag.id} className="bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-300 hover:bg-white/10 transition-colors">
                                         {isThai ? (tag.name_th || tag.name) : (tag.name_en || tag.name)}
                                     </div>
                                 ))}

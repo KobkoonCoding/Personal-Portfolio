@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #030412;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .status {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .success {
+            border-left: 4px solid #57db96;
+        }
+
+        .error {
+            border-left: 4px solid #ea4884;
+        }
+
+        .warning {
+            border-left: 4px solid #d6995c;
+        }
+
+        button {
+            padding: 12px 24px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #5c33cc, #7a57db);
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #audioStatus {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎵 Music Player Test</h1>
+
+        <div class="status warning">
+            <h2>⚠️ Audio File Required</h2>
+            <p>The music player is installed but needs an actual MP3 file to work.</p>
+            <p><strong>Current file:</strong> <code>/assets/background-music.mp3</code> (empty placeholder)</p>
+        </div>
+
+        <div class="status success">
+            <h2>✅ Music Player Component Status</h2>
+            <p>✓ MusicPlayer.jsx created</p>
+            <p>✓ Integrated into App.jsx</p>
+            <p>✓ Error handling added</p>
+            <p>✓ Volume controls implemented</p>
+        </div>
+
+        <h2>🎮 Test Audio Playback</h2>
+        <p>Click the button below to test if audio works in your browser:</p>
+
+        <button onclick="testAudio()">🔊 Test Audio</button>
+        <button onclick="checkFile()">📁 Check Music File</button>
+
+        <div id="audioStatus"></div>
+
+        <audio id="testAudio" style="display:none;">
+            <source src="/assets/background-music.mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="status">
+            <h2>📝 Next Steps</h2>
+            <ol>
+                <li><strong>Download free music:</strong>
+                    <ul>
+                        <li><a href="https://mixkit.co/free-stock-music/chill/" target="_blank"
+                                style="color: #57db96;">Mixkit - Free Chill Music</a></li>
+                        <li><a href="https://www.chosic.com/free-music/chill/" target="_blank"
+                                style="color: #57db96;">Chosic - Chill Background Music</a></li>
+                        <li><a href="https://www.bensound.com/royalty-free-music/track/chill" target="_blank"
+                                style="color: #57db96;">Bensound - Chill Beats</a></li>
+                    </ul>
+                </li>
+                <li><strong>Rename the file to:</strong> <code>background-music.mp3</code></li>
+                <li><strong>Place it in:</strong> <code>public/assets/</code> folder</li>
+                <li><strong>Restart dev server:</strong> <code>npm run dev</code></li>
+                <li><strong>Test:</strong> Click the purple button in top-left corner</li>
+            </ol>
+        </div>
+
+        <div class="status">
+            <h2>🔧 Quick Fix Option</h2>
+            <p>If you want to test immediately with a sample audio:</p>
+            <ol>
+                <li>Go to <a href="https://mixkit.co/free-stock-music/chill/" target="_blank"
+                        style="color: #57db96;">Mixkit</a></li>
+                <li>Download any chill track (e.g., "Lofi Study")</li>
+                <li>Rename to <code>background-music.mp3</code></li>
+                <li>Replace the empty file in <code>public/assets/</code></li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function testAudio() {
+            const audio = document.getElementById('testAudio');
+            const status = document.getElementById('audioStatus');
+
+            audio.play()
+                .then(() => {
+                    status.innerHTML = '<div class="status success"><strong>✅ Success!</strong> Audio playback works in your browser.</div>';
+                    setTimeout(() => audio.pause(), 2000);
+                })
+                .catch(err => {
+                    if (err.name === 'NotSupportedError' || err.message.includes('404')) {
+                        status.innerHTML = '<div class="status error"><strong>❌ File Not Found</strong><br>The audio file is empty or missing. Please add a real MP3 file.</div>';
+                    } else {
+                        status.innerHTML = '<div class="status error"><strong>❌ Error:</strong> ' + err.message + '</div>';
+                    }
+                });
+        }
+
+        function checkFile() {
+            const status = document.getElementById('audioStatus');
+            fetch('/assets/background-music.mp3', { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        const size = response.headers.get('content-length');
+                        if (size === '0' || !size) {
+                            status.innerHTML = '<div class="status warning"><strong>⚠️ Empty File</strong><br>File exists but is empty (0 bytes). Please add a real MP3 file.</div>';
+                        } else {
+                            const sizeMB = (parseInt(size) / 1024 / 1024).toFixed(2);
+                            status.innerHTML = '<div class="status success"><strong>✅ File Found!</strong><br>Size: ' + sizeMB + ' MB<br>Ready to play!</div>';
+                        }
+                    } else {
+                        status.innerHTML = '<div class="status error"><strong>❌ File Not Found</strong><br>Please add background-music.mp3 to public/assets/</div>';
+                    }
+                })
+                .catch(err => {
+                    status.innerHTML = '<div class="status error"><strong>❌ Error checking file:</strong> ' + err.message + '</div>';
+                });
+        }
+
+        // Auto-check on load
+        window.addEventListener('load', checkFile);
+    </script>
+</body>
+
+</html>

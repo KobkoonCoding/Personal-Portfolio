@@ -56,31 +56,39 @@ const HeroText = () => {
           </motion.p>
         </div>
       </div>
-      <div className="flex flex-col space-y-6 md:hidden">
-        <motion.p className="text-4xl font-medium">{t('hero.greeting')}</motion.p>
-        <motion.div
+      <div className="flex flex-col md:hidden">
+        <motion.h1
+          className="text-3xl font-medium mb-4"
           variants={variants}
           initial="hidden"
           animate="visible"
-          transition={{ delay: 1.5 }}>
-          <motion.p className="text-5xl font-black text-neutral-300">
-            {t('hero.advancing')}
+          transition={{ delay: 1 }}
+        >
+          {t('hero.greeting')}
+        </motion.h1>
+        <div className="flex flex-col items-start">
+          <motion.p
+            className="text-4xl font-medium text-neutral-300"
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 1.2 }}
+          >
+            {t('hero.expertIn')} <br />
+            {t('hero.expertInSub')}
           </motion.p>
           <motion.div
             variants={variants}
             initial="hidden"
             animate="visible"
-            transition={{ delay: 1.8 }}
+            transition={{ delay: 1.5 }}
           >
             <FlipWords
               words={Array.isArray(words) ? words : ["Mathematics", "Optimization", "Machine Learning"]}
-              className="font-bold text-white text-7xl"
+              className="font-black text-white text-6xl"
             />
           </motion.div>
-          <motion.p className="text-4xl font-black text-neutral-300">
-            {t('hero.researchFields')}
-          </motion.p>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

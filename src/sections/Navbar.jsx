@@ -68,13 +68,8 @@ const Navbar = () => {
   return (
     <div className="fixed inset-x-0 z-20 w-full backdrop-blur-lg bg-primary/40">
       <div className="mx-auto c-space max-w-7xl">
-        <div className="flex items-center justify-between py-2 sm:py-4">
-          <Link
-            to="/"
-            className="text-xl font-bold transition-colors text-neutral-400 hover:text-white"
-          >
-            VX
-          </Link>
+        <div className="flex items-center justify-end py-2 sm:py-4">
+          {/* VX Logo removed - Music player button will serve as home link */}
           <div className="flex items-center gap-6">
             <nav className="hidden sm:flex">
               <Navigation />
