@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
@@ -20,5 +20,12 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
+
+// Use session persistence — auth state is cleared when the browser tab closes.
+// This is more secure than the default browserLocalPersistence (which never expires).
+// Fire-and-forget; failure is non-fatal (auth still works, just falls back to default).
+setPersistence(auth, browserSessionPersistence).catch((error) => {
+    console.error('Failed to set auth persistence:', error);
+});
 
 export default app;

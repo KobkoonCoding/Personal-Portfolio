@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from 'react';
 import { onAuthChange, signOut as firebaseSignOut } from '../services/authService';
 import {
     getAllActivities,
@@ -7,6 +7,7 @@ import {
     deleteActivity as firestoreDeleteActivity,
     batchUpdateOrder
 } from '../services/firestoreService';
+import { ADMIN_UIDS, IDLE_TIMEOUT_MS } from '../constants/admin';
 
 const AdminContext = createContext();
 
@@ -15,10 +16,31 @@ export const AdminProvider = ({ children }) => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
+    const idleTimerRef = useRef(null);
 
-    // Listen to Firebase auth state changes
+    const logout = useCallback(async () => {
+        try {
+            await firebaseSignOut();
+            setIsAdmin(false);
+            setUser(null);
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
+    }, []);
+
+    // Listen to Firebase auth state changes + enforce UID allowlist
     useEffect(() => {
-        const unsubscribe = onAuthChange((currentUser) => {
+        const unsubscribe = onAuthChange(async (currentUser) => {
+            if (currentUser && !ADMIN_UIDS.includes(currentUser.uid)) {
+                // Authenticated user is NOT in the admin allowlist — kick them out.
+                console.warn('Non-admin user detected, signing out:', currentUser.uid);
+                await firebaseSignOut().catch(() => {});
+                setUser(null);
+                setIsAdmin(false);
+                setLoading(false);
+                return;
+            }
+
             setUser(currentUser);
             setIsAdmin(!!currentUser);
             setLoading(false);
@@ -26,6 +48,28 @@ export const AdminProvider = ({ children }) => {
 
         return () => unsubscribe();
     }, []);
+
+    // Idle timeout — auto-logout after IDLE_TIMEOUT_MS of no user activity
+    useEffect(() => {
+        if (!isAdmin) return undefined;
+
+        const resetTimer = () => {
+            if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+            idleTimerRef.current = setTimeout(() => {
+                console.info('Idle timeout reached, logging out');
+                logout();
+            }, IDLE_TIMEOUT_MS);
+        };
+
+        const events = ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll'];
+        events.forEach((event) => window.addEventListener(event, resetTimer, { passive: true }));
+        resetTimer();
+
+        return () => {
+            if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+            events.forEach((event) => window.removeEventListener(event, resetTimer));
+        };
+    }, [isAdmin, logout]);
 
     // Load activities from Firestore
     useEffect(() => {
@@ -111,16 +155,6 @@ export const AdminProvider = ({ children }) => {
             const data = await getAllActivities();
             setActivities(data);
             throw error;
-        }
-    };
-
-    const logout = async () => {
-        try {
-            await firebaseSignOut();
-            setIsAdmin(false);
-            setUser(null);
-        } catch (error) {
-            console.error('Logout error:', error);
         }
     };
 

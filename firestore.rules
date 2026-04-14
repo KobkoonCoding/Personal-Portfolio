@@ -4,18 +4,27 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // ────────────────────────────────────────────────────────────────
+    // Helper: only the owner UID counts as admin.
+    // Update this UID if the owner account ever changes.
+    // ────────────────────────────────────────────────────────────────
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.uid == 'OfD8zp1L7kagUyBs1szseztiAdK2';
+    }
+
+    // ────────────────────────────────────────────────────────────────
     // activities — public portfolio entries
-    // Anyone visiting the site can read. Only authenticated admins write.
+    // Anyone visiting the site can read. Only the admin can write.
     // ────────────────────────────────────────────────────────────────
     match /activities/{doc} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAdmin();
     }
 
     // ────────────────────────────────────────────────────────────────
     // messages — contact form submissions
     // Anonymous visitors can CREATE a message (sent from the Contact form)
-    // but cannot read anyone's messages. Only authenticated admins can read,
+    // but cannot read anyone's messages. Only the admin can read,
     // update (e.g. mark as read), or delete messages.
     //
     // Create is guarded so a bot cannot dump arbitrary fields or huge payloads:
@@ -34,7 +43,7 @@ service cloud.firestore {
         && request.resource.data.name.size() < 200
         && request.resource.data.email.size() < 200;
 
-      allow read, update, delete: if request.auth != null;
+      allow read, update, delete: if isAdmin();
     }
 
   }
