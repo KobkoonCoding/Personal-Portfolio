@@ -30,3 +30,8 @@ dist-ssr
 
 # Claude Code local settings
 .claude/
+
+# Firebase CLI cache
+.firebase/
+firebase-debug.log
+firestore-debug.log

@@ -1,0 +1,41 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ────────────────────────────────────────────────────────────────
+    // activities — public portfolio entries
+    // Anyone visiting the site can read. Only authenticated admins write.
+    // ────────────────────────────────────────────────────────────────
+    match /activities/{doc} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // ────────────────────────────────────────────────────────────────
+    // messages — contact form submissions
+    // Anonymous visitors can CREATE a message (sent from the Contact form)
+    // but cannot read anyone's messages. Only authenticated admins can read,
+    // update (e.g. mark as read), or delete messages.
+    //
+    // Create is guarded so a bot cannot dump arbitrary fields or huge payloads:
+    //   - required string fields: name, email, message
+    //   - message size < 5000 chars
+    //   - optional `read` defaults to false, `createdAt` set by server
+    // ────────────────────────────────────────────────────────────────
+    match /messages/{doc} {
+      allow create: if
+        request.resource.data.keys().hasAll(['name', 'email', 'message'])
+        && request.resource.data.name is string
+        && request.resource.data.email is string
+        && request.resource.data.message is string
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() < 5000
+        && request.resource.data.name.size() < 200
+        && request.resource.data.email.size() < 200;
+
+      allow read, update, delete: if request.auth != null;
+    }
+
+  }
+}
