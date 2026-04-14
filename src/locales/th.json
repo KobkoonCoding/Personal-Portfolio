@@ -209,6 +209,15 @@
     "onePerLine": "หนึ่งรายการต่อบรรทัด",
     "mainThumbnail": "รูปภาพตัวอย่างหลัก",
     "emailLabel": "อีเมล",
-    "passwordLabel": "รหัสผ่าน"
+    "passwordLabel": "รหัสผ่าน",
+    "messages": "ข้อความ",
+    "unread": "ยังไม่อ่าน",
+    "messagesTotal": "ข้อความทั้งหมด",
+    "noMessages": "ยังไม่มีข้อความ",
+    "loadingMessages": "กำลังโหลดข้อความ...",
+    "replyEmail": "ตอบกลับทางอีเมล",
+    "confirmDeleteMessage": "ยืนยันการลบข้อความนี้?",
+    "refresh": "รีเฟรช",
+    "rulesHint": "หากพบ permission error กรุณาตรวจสอบ Firestore rules ให้แอดมินอ่าน collection 'messages' ได้"
   }
 }

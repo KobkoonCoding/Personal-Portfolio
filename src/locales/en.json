@@ -209,6 +209,15 @@
     "onePerLine": "One per line",
     "mainThumbnail": "Main Thumbnail",
     "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "passwordLabel": "Password",
+    "messages": "Messages",
+    "unread": "unread",
+    "messagesTotal": "total",
+    "noMessages": "No messages yet.",
+    "loadingMessages": "Loading messages...",
+    "replyEmail": "Reply by email",
+    "confirmDeleteMessage": "Delete this message permanently?",
+    "refresh": "Refresh",
+    "rulesHint": "If you see a permission error, make sure Firestore rules allow admins to read the 'messages' collection."
   }
 }

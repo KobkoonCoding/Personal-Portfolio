@@ -4,6 +4,7 @@ import { useAdmin } from '../context/AdminContext';
 import { useTranslation } from 'react-i18next';
 import ActivityForm from '../components/ActivityForm';
 import AdminSettings from '../components/AdminSettings';
+import MessagesList from '../components/MessagesList';
 
 const Dashboard = () => {
     const { activities, isAdmin, loading, logout, deleteActivity, reorderActivities } = useAdmin();
@@ -12,6 +13,7 @@ const Dashboard = () => {
     const [showForm, setShowForm] = useState(false);
     const [editingActivity, setEditingActivity] = useState(null);
     const [showSettings, setShowSettings] = useState(false);
+    const [showMessages, setShowMessages] = useState(false);
     const [draggedIndex, setDraggedIndex] = useState(null);
     const [dragOverIndex, setDragOverIndex] = useState(null);
 
@@ -93,14 +95,20 @@ const Dashboard = () => {
             <div className="max-w-6xl mx-auto">
                 <div className="flex justify-between items-center mb-12">
                     <h1 className="text-4xl font-bold text-white">{t('admin.dashboard')}</h1>
-                    <div className="flex gap-4">
+                    <div className="flex flex-wrap gap-4">
                         <button
-                            onClick={() => { setShowSettings(!showSettings); setShowForm(false); }}
+                            onClick={() => { setShowMessages(!showMessages); setShowSettings(false); setShowForm(false); }}
+                            className={`border px-6 py-2 rounded-full transition-all font-semibold ${showMessages ? 'bg-sand text-black border-sand' : 'bg-white/5 border-white/10 text-white hover:bg-white/10'}`}
+                        >
+                            {t('admin.messages')}
+                        </button>
+                        <button
+                            onClick={() => { setShowSettings(!showSettings); setShowMessages(false); setShowForm(false); }}
                             className="bg-white/5 border border-white/10 text-white px-6 py-2 rounded-full hover:bg-white/10 transition-all font-semibold"
                         >
                             {showSettings ? 'Dashboard' : 'Settings'}
                         </button>
-                        {!showSettings && (
+                        {!showSettings && !showMessages && (
                             <button
                                 onClick={handleAddNew}
                                 className="bg-sand text-black px-6 py-2 rounded-full font-bold hover:bg-white transition-all"
@@ -117,7 +125,12 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                {showSettings ? (
+                {showMessages ? (
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 mb-12 backdrop-blur-xl max-w-3xl mx-auto">
+                        <h2 className="text-2xl font-bold text-white mb-6">{t('admin.messages')}</h2>
+                        <MessagesList />
+                    </div>
+                ) : showSettings ? (
                     <div className="bg-white/5 border border-white/10 rounded-2xl p-8 mb-12 backdrop-blur-xl max-w-2xl mx-auto">
                         <AdminSettings onClose={() => setShowSettings(false)} />
                     </div>

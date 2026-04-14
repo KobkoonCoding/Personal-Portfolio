@@ -3,8 +3,7 @@ import Alert from "../components/Alert";
 import { Particles } from "../components/Particles";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useTranslation } from "react-i18next";
-
-const WEB3FORMS_ACCESS_KEY = "b858e62d-4977-4c34-80b2-3955129ea0e5";
+import { saveMessage } from "../services/messagesService";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -37,23 +36,13 @@ const Contact = () => {
     setIsLoading(true);
 
     try {
-      const form = new FormData(e.target);
-      form.append("access_key", WEB3FORMS_ACCESS_KEY);
-      form.append("subject", `New contact from ${formData.name}`);
-
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: form,
+      await saveMessage({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
       });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setFormData({ name: "", email: "", message: "" });
-        showAlertMessage("success", t('common.sentSuccess'));
-      } else {
-        throw new Error(result.message || t('common.sentError'));
-      }
+      setFormData({ name: "", email: "", message: "" });
+      showAlertMessage("success", t('common.sentSuccess'));
     } catch (error) {
       console.error(error);
       showAlertMessage("danger", t('common.sentError'));
