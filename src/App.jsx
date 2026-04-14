@@ -12,6 +12,7 @@ import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 import ActivityDetail from "./pages/ActivityDetail";
 import AllActivities from "./pages/AllActivities";
+import AllPublications from "./pages/AllPublications";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import MusicPlayer from "./components/MusicPlayer";
@@ -36,6 +37,7 @@ const App = () => {
         } />
         <Route path="/activity/:id" element={<ActivityDetail />} />
         <Route path="/activities" element={<AllActivities />} />
+        <Route path="/publications" element={<AllPublications />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Dashboard />} />
       </Routes>

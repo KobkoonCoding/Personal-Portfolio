@@ -73,11 +73,15 @@
   },
   "publications": {
     "title": "Selected Publications",
+    "allTitle": "All Publications",
     "intro": "Peer-reviewed papers at the intersection of fixed-point theory, convex optimization, and deep learning. Published in international journals (Q1/Q2).",
     "viewPaper": "View paper",
     "linkSoon": "Link coming soon",
     "latest": "Latest",
-    "scholarProfile": "See all on Google Scholar"
+    "scholarProfile": "See all on Google Scholar",
+    "viewAll": "View All Publications",
+    "seeMore": "See More Publications",
+    "exploreAll": "Explore all publications"
   },
   "demos": {
     "title": "Live Demos",

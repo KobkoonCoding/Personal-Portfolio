@@ -73,11 +73,15 @@
   },
   "publications": {
     "title": "บทความตีพิมพ์ที่คัดเลือก",
+    "allTitle": "บทความตีพิมพ์ทั้งหมด",
     "intro": "บทความที่ผ่านการตรวจทานบนจุดตัดของทฤษฎีจุดคงที่, Convex Optimization และ Deep Learning ตีพิมพ์ในวารสารระดับนานาชาติ (Q1/Q2)",
     "viewPaper": "อ่านบทความ",
     "linkSoon": "ลิงก์เร็ว ๆ นี้",
     "latest": "ล่าสุด",
-    "scholarProfile": "ดูทั้งหมดบน Google Scholar"
+    "scholarProfile": "ดูทั้งหมดบน Google Scholar",
+    "viewAll": "ดูบทความทั้งหมด",
+    "seeMore": "ดูบทความเพิ่มเติม",
+    "exploreAll": "สำรวจบทความทั้งหมด"
   },
   "demos": {
     "title": "เดโมที่ใช้งานได้จริง",
