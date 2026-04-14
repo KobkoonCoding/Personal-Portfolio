@@ -19,43 +19,9 @@ const MusicPlayer = () => {
         }
     }, [volume]);
 
-    // Autoplay music when component mounts
-    useEffect(() => {
-        const autoplayMusic = async () => {
-            if (audioRef.current && !isPlaying) {
-                try {
-                    audioRef.current.volume = volume;
-                    await audioRef.current.play();
-                    setIsPlaying(true);
-                    setAudioError(false);
-                    setIsLoading(false);
-                    console.log('Music started automatically');
-                } catch (err) {
-                    console.log('Autoplay prevented. Waiting for user interaction...');
-                    setIsLoading(false);
-
-                    const startOnInteraction = async () => {
-                        try {
-                            await audioRef.current.play();
-                            setIsPlaying(true);
-                            setAudioError(false);
-                            console.log('Music started after user interaction');
-                            document.removeEventListener('click', startOnInteraction);
-                            document.removeEventListener('touchstart', startOnInteraction);
-                        } catch (e) {
-                            console.log('Failed to start music:', e);
-                        }
-                    };
-
-                    document.addEventListener('click', startOnInteraction, { once: true });
-                    document.addEventListener('touchstart', startOnInteraction, { once: true });
-                }
-            }
-        };
-
-        const timer = setTimeout(autoplayMusic, 1000);
-        return () => clearTimeout(timer);
-    }, []);
+    // Music is opt-in: user must click the button to start playback.
+    // Autoplay is intentionally disabled so the portfolio stays silent by
+    // default — more appropriate for academic / professional audiences.
 
     const togglePlay = () => {
         if (audioRef.current) {

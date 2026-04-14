@@ -17,8 +17,10 @@ function Navigation() {
 
   const navItems = [
     { name: t('nav.home'), href: 'home' },
-    { name: t('nav.about'), href: 'about' },
-    { name: t('nav.work'), href: 'work' },
+    { name: t('nav.research'), href: 'research' },
+    { name: t('nav.publications'), href: 'publications' },
+    { name: t('nav.activities'), href: 'activities' },
+    { name: t('nav.demos'), href: 'demos' },
     { name: t('nav.contact'), href: 'contact' },
   ];
 

@@ -46,7 +46,7 @@ const ActivityDetail = () => {
         <div className="min-h-screen pt-32 pb-20 px-4">
             <div className="max-w-4xl mx-auto">
                 <button
-                    onClick={() => navigate('/#work')}
+                    onClick={() => navigate('/#activities')}
                     className="flex items-center text-sand mb-8 hover:opacity-80 transition-opacity"
                 >
                     <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

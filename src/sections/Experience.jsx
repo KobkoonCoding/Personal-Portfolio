@@ -10,10 +10,10 @@ const Experience = () => {
   return (
     <div
       ref={sectionRef}
-      id="work"
+      id="experience"
       className={`relative w-full c-space section-spacing scroll-reveal-scale ${isVisible ? 'visible' : ''}`}
     >
-      <h2 className="text-heading mb-12">{t('nav.work')}</h2>
+      <h2 className="text-heading mb-12">{t('experienceHeading')}</h2>
       <Timeline data={Array.isArray(translatedExperiences) ? translatedExperiences : []} />
     </div>
   )

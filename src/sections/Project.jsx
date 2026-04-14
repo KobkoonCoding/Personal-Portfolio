@@ -17,7 +17,7 @@ const Project = () => {
   return (
     <section
       className="relative c-space section-spacing"
-      id="projects"
+      id="activities"
     >
       <div className="flex justify-between items-end mb-12">
         <h2 className="text-heading mb-0">{t('activities.title')}</h2>

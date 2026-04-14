@@ -3,7 +3,10 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
+import Research from "./sections/Research";
+import Publications from "./sections/Publications";
 import Project from "./sections/Project";
+import Demos from "./sections/Demos";
 import Experience from "./sections/Experience";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
@@ -23,7 +26,10 @@ const App = () => {
           <>
             <Hero />
             <About />
+            <Research />
+            <Publications />
             <Project />
+            <Demos />
             <Experience />
             <Contact />
           </>

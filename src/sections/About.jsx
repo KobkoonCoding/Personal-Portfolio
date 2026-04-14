@@ -50,17 +50,17 @@ const About = () => {
             </p>
             <Card
               style={{ rotate: "75deg", top: "30%", left: "20%" }}
-              text="Convex Analysis"
+              text="Mathematics"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "-30deg", top: "60%", left: "45%" }}
-              text="Fixed Point Theory"
+              text="Deep Learning"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "90deg", bottom: "30%", left: "75%" }}
-              text="Optimization"
+              text="Interpretability"
               containerRef={grid2Container}
             />
             <Card
@@ -70,22 +70,22 @@ const About = () => {
             />
             <Card
               style={{ rotate: "20deg", top: "10%", left: "38%" }}
-              text="Machine Learning"
+              text="Shipping"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "30deg", top: "70%", left: "70%" }}
-              text="Deep Learning"
+              text="Fixed Point Theory"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "-45deg", top: "70%", left: "25%" }}
-              text="Python"
+              text="Convex Optimization"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "-45deg", top: "5%", left: "10%" }}
-              text="Data Prediction"
+              text="Python"
               containerRef={grid2Container}
             />
           </div>

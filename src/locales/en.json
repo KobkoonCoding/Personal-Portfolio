@@ -1,48 +1,125 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About",
-    "work": "Work",
+    "research": "Research",
+    "publications": "Publications",
+    "activities": "Activities",
+    "demos": "Demos",
     "contact": "Contact",
     "admin": "Admin"
   },
   "hero": {
-    "greeting": "Hi I'm Dr. Kobkoon Janngam",
-    "expertIn": "Researcher &",
-    "expertInSub": "Expert in",
-    "advancing": "Advancing",
-    "researchFields": "Research Fields",
+    "greeting": "Hi, I'm Dr. Kobkoon Janngam",
+    "identity": "Mathematician. ML researcher. Builder.",
+    "subline": "PhD mathematician working at the intersection of convex analysis, deep learning, and image processing — with a focus on reducing the black box.",
     "words": [
-      "Mathematics",
-      "Fixed Point Theory",
-      "Optimization",
-      "Deep Learning",
-      "Data Preprocessing",
-      "Machine Learning"
-    ]
+      "Math-First Researcher",
+      "Deep Learning Practitioner",
+      "Interpretability Advocate",
+      "Image & Data Engineer",
+      "Builder Who Ships"
+    ],
+    "ctaPrimary": "See my research",
+    "ctaSecondary": "Collaborate"
   },
   "about": {
     "title": "About Me",
-    "bio": "I am a proactive researcher at Chiang Mai University with a PhD in Mathematics. My expertise lies in Nonlinear and Convex Analysis, Fixed Point Theory, and their applications in Machine Learning and Image Processing.",
-    "academicExcellence": "ACADEMIC EXCELLENCE",
-    "location": "Location",
-    "locationDetail": "I am currently based in Chiang Mai, Thailand, at Chiang Mai University.",
-    "startProject": "Do You want to Start a Project Together?",
-    "researchTools": "Research Tools",
-    "researchToolsDetail": "I utilize a variety of programming languages and mathematical tools to solve optimization problems and develop machine learning algorithms."
+    "bio": "I'm a postdoctoral researcher at Chiang Mai University with a PhD in Mathematics. I work at the intersection of convex optimization, fixed-point theory, and deep learning — and I care about making models interpretable instead of treating them as magic. I apply this to image restoration, classification, and real data pipelines, including medical imaging work with clinical collaborators.",
+    "academicExcellence": "CORE EXPERTISE",
+    "location": "Based In",
+    "locationDetail": "Chiang Mai, Thailand — at Chiang Mai University. Open to international collaboration and remote research projects.",
+    "startProject": "Got a problem worth modeling?",
+    "researchTools": "Daily Stack",
+    "researchToolsDetail": "Python, PyTorch, NumPy, OpenCV, and a pile of LaTeX. I write the math, train the model, clean the data, and ship the interface."
+  },
+  "research": {
+    "title": "Research Focus",
+    "intro": "Five pillars that define how I work and what I ship.",
+    "stats": {
+      "papers": "Peer-reviewed papers",
+      "talks": "Conference talks",
+      "years": "Years of research",
+      "scholar": "View on Google Scholar →"
+    },
+    "pillars": {
+      "math": {
+        "title": "Math-First Researcher",
+        "blurb": "PhD-level convex analysis and fixed-point theory — the engine behind every algorithm I publish."
+      },
+      "dl": {
+        "title": "Deep Learning Practitioner",
+        "blurb": "I train models end-to-end in PyTorch, not just read papers about them."
+      },
+      "interp": {
+        "title": "Interpretability Advocate",
+        "blurb": "My signature angle: fuse mathematical structure with deep models to shrink the black box."
+      },
+      "image": {
+        "title": "Image & Data Engineer",
+        "blurb": "Image reconstruction, classification, CSV preprocessing, pipelines that survive real data."
+      },
+      "ship": {
+        "title": "Builder Who Ships",
+        "blurb": "Web tools, mobile predictors, interactive demos. I don't stop at a notebook."
+      }
+    },
+    "chips": {
+      "math": ["Convex Analysis", "Fixed Point Theory", "Optimization"],
+      "dl": ["PyTorch", "CNN", "Training"],
+      "interp": ["Math × ML", "Model Diagnostics", "Reducing Black Box"],
+      "image": ["Image Reconstruction", "Classification", "Preprocessing"],
+      "ship": ["React", "Vite", "Mobile"]
+    }
+  },
+  "publications": {
+    "title": "Selected Publications",
+    "intro": "Peer-reviewed papers at the intersection of fixed-point theory, convex optimization, and deep learning. Published in international journals (Q1/Q2).",
+    "viewPaper": "View paper",
+    "linkSoon": "Link coming soon",
+    "latest": "Latest",
+    "scholarProfile": "See all on Google Scholar"
+  },
+  "demos": {
+    "title": "Live Demos",
+    "subtitle": "Small web tools I built to solve problems I kept hitting in my own research.",
+    "openDemo": "Open demo",
+    "source": "Source",
+    "stack": "Stack",
+    "comingSoon": "Coming soon",
+    "items": {
+      "mlPlatform": {
+        "title": "ML Research Platform",
+        "blurb": "A live playground for the machine-learning models from my research papers — upload data, run the model, see the result in your browser."
+      },
+      "hypertension": {
+        "title": "Hypertension Risk Predictor",
+        "blurb": "Mobile-first risk estimator trained with Village Health Volunteers in San Pa Tong."
+      },
+      "portfolio": {
+        "title": "This Portfolio",
+        "blurb": "React 19 + Three.js + Firebase — the site you're reading right now."
+      }
+    }
   },
   "contact": {
-    "title": "Academic Inquiry",
-    "subtitle": "For research collaborations, academic questions, or professional consultations, please feel free to reach out. I look forward to connecting with you.",
+    "title": "Let's build something together",
+    "subtitle": "Research collaborations, interpretable-ML projects, image-processing consulting, or just a hard problem you want a mathematician to look at — drop me a message.",
     "nameLabel": "Full Name",
     "namePlaceholder": "Dr. John Doe",
     "emailLabel": "Email",
-    "emailPlaceholder": "colleague@university.edu",
+    "emailPlaceholder": "you@domain.com",
     "messageLabel": "Message",
-    "messagePlaceholder": "Describe your research inquiry or professional request",
+    "messagePlaceholder": "Tell me the problem, data, and what 'done' looks like.",
     "sendButton": "Send Message",
     "sendingButton": "Sending..."
   },
+  "footer": {
+    "scholar": "Google Scholar",
+    "github": "GitHub",
+    "orcid": "ORCID",
+    "linkedin": "LinkedIn"
+  },
+  "experienceHeading": "Experience",
   "common": {
     "success": "Success",
     "error": "Error",
@@ -78,7 +155,8 @@
       "contents": [
         "Conducting advanced research in Nonlinear and Convex Analysis.",
         "Developing novel algorithms for Optimization and Fixed Point Theory.",
-        "Collaborating on international research projects, including short-term research in Japan."
+        "Collaborating on international research projects, including short-term research in Japan.",
+        "Collaborating with clinical researchers on interpretable image-classification models."
       ]
     },
     {
