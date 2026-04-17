@@ -25,7 +25,9 @@ const About = () => {
         >
           <img
             src="assets/coding-pov.png"
-            className="absolute scale-[1.75] -right-[5rem] -top-[1rem] 
+            alt=""
+            className="absolute scale-100 -right-[2rem] -top-[1rem]
+            sm:scale-[1.75] sm:-right-[5rem]
             md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5]"
           />
           <div className="z-10">

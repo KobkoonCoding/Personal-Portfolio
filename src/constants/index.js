@@ -1,28 +1,21 @@
-// SOCIALS
-export const mySocials = [
-  {
-    name: "Email",
-    href: "mailto:Kobkoon.j@cmu.ac.th",
-    icon: "/assets/logos/email.svg",
-  },
-  {
-    name: "Chiang Mai University",
-    href: "https://www.math.science.cmu.ac.th/",
-    icon: "/assets/logos/cmu.svg",
-  },
-];
-
 // ACADEMIC & PROFESSIONAL LINKS — exposed separately so Research + Footer can reuse them.
+export const SOCIALS_EMAIL = "mailto:Kobkoon.j@cmu.ac.th";
+export const SOCIALS_CMU_URL = "https://www.math.science.cmu.ac.th/";
 export const SOCIALS_SCHOLAR_URL = "https://scholar.google.com/citations?user=1qjk0uQAAAAJ&hl=en&oi=ao";
 export const SOCIALS_GITHUB_URL = "https://github.com/KobkoonCoding";
 export const SOCIALS_ORCID_URL = "https://orcid.org/0009-0003-9196-5018";
 export const SOCIALS_LINKEDIN_URL = "https://www.linkedin.com/in/kobkoon-janngam-10ba81329/";
 
+// Text-only academic/professional links used in Footer.
+// Icons were removed because email.svg / cmu.svg didn't exist in /public/assets/logos/
+// and the text-only pattern is consistent across all 6 links.
 export const academicLinks = [
-  { key: "scholar", href: SOCIALS_SCHOLAR_URL },
-  { key: "github", href: SOCIALS_GITHUB_URL },
-  { key: "orcid", href: SOCIALS_ORCID_URL },
-  { key: "linkedin", href: SOCIALS_LINKEDIN_URL },
+  { key: "email", href: SOCIALS_EMAIL, external: false },
+  { key: "cmu", href: SOCIALS_CMU_URL, external: true },
+  { key: "scholar", href: SOCIALS_SCHOLAR_URL, external: true },
+  { key: "github", href: SOCIALS_GITHUB_URL, external: true },
+  { key: "orcid", href: SOCIALS_ORCID_URL, external: true },
+  { key: "linkedin", href: SOCIALS_LINKEDIN_URL, external: true },
 ];
 
 // WORK EXPERIENCE

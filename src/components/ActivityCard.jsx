@@ -18,7 +18,7 @@ const ActivityCard = ({ id, ...activity }) => {
     return (
         <Link to={`/activity/${id}`} className="group block">
             <div className="bg-[#0e0e1a] rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:-translate-y-2">
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-40 sm:h-48 overflow-hidden">
                     <img
                         src={image}
                         alt={title}

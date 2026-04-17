@@ -17,8 +17,8 @@ const scrollToId = (e, id) => {
 const CTARow = ({ ctaPrimary, ctaSecondary, size = "md" }) => {
   const base =
     size === "sm"
-      ? "px-5 py-2 text-sm rounded-full font-semibold transition-all"
-      : "px-6 py-2.5 rounded-full font-semibold transition-all";
+      ? "px-5 py-3 text-sm rounded-full font-semibold transition-all min-h-[44px] inline-flex items-center justify-center"
+      : "px-6 py-3 sm:py-2.5 rounded-full font-semibold transition-all min-h-[44px] inline-flex items-center justify-center";
   return (
     <motion.div
       className="flex flex-wrap gap-3 mt-8"

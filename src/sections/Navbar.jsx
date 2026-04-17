@@ -81,12 +81,14 @@ const Navbar = () => {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="flex cursor-pointer text-neutral-400 hover:text-white focus:outline-none sm:hidden"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              className="flex cursor-pointer text-neutral-400 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sand/50 rounded sm:hidden min-w-[44px] min-h-[44px] items-center justify-center"
             >
               <img
                 src={isOpen ? "assets/close.svg" : "assets/menu.svg"}
                 className="w-6 h-6"
-                alt="toggle"
+                alt=""
               />
             </button>
           </div>

@@ -118,6 +118,8 @@
     "sendingButton": "Sending..."
   },
   "footer": {
+    "email": "Email",
+    "cmu": "Chiang Mai University",
     "scholar": "Google Scholar",
     "github": "GitHub",
     "orcid": "ORCID",

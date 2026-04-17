@@ -44,21 +44,23 @@ const AllActivities = () => {
 
                 {totalPages > 1 && (
                     <div className="mt-16 flex flex-col items-center gap-4">
-                        <div className="flex items-center gap-4">
+                        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
                             <button
                                 onClick={() => handlePageChange(currentPage - 1)}
                                 disabled={currentPage === 1}
-                                className="px-6 py-2 bg-white/5 border border-white/10 rounded-full text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                                aria-label={t('common.previous')}
+                                className="px-4 sm:px-6 py-2 bg-white/5 border border-white/10 rounded-full text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-sm"
                             >
-                                {t('common.previous' || 'Previous')}
+                                <span className="sm:hidden">←</span>
+                                <span className="hidden sm:inline">{t('common.previous')}</span>
                             </button>
 
-                            <div className="flex items-center gap-2">
+                            <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
                                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                                     <button
                                         key={page}
                                         onClick={() => handlePageChange(page)}
-                                        className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all ${currentPage === page
+                                        className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border transition-all text-sm sm:text-base ${currentPage === page
                                             ? 'bg-sand text-black border-sand font-bold'
                                             : 'bg-transparent text-white border-white/10 hover:border-white/30'
                                             }`}
@@ -71,9 +73,11 @@ const AllActivities = () => {
                             <button
                                 onClick={() => handlePageChange(currentPage + 1)}
                                 disabled={currentPage === totalPages}
-                                className="px-6 py-2 bg-white/5 border border-white/10 rounded-full text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                                aria-label={t('common.next')}
+                                className="px-4 sm:px-6 py-2 bg-white/5 border border-white/10 rounded-full text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-sm"
                             >
-                                {t('common.next' || 'Next')}
+                                <span className="sm:hidden">→</span>
+                                <span className="hidden sm:inline">{t('common.next')}</span>
                             </button>
                         </div>
                         <p className="text-gray-400 text-sm">

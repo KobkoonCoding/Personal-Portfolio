@@ -15,6 +15,7 @@ const CopyEmailButton = () => {
   return (
     <motion.button
       onClick={copytoClipboard}
+      aria-label={copied ? "Email copied to clipboard" : "Copy email address"}
       whileHover={{ y: -5 }}
       whileTap={{ scale: 1.05 }}
       className="relative px-1 py-4 text-sm text-center rounded-full font-extralight bg-primary w-[12rem] cursor-pointer overflow-hidden"
