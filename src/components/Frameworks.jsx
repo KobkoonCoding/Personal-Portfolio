@@ -1,37 +1,48 @@
 import { OrbitingCircles } from "./ObitingCircles";
 
+// Only reference SVGs that actually exist in public/assets/logos/.
+// Tools on the inner orbit match the "Daily Stack" text (Python, PyTorch,
+// NumPy, OpenCV, LaTeX); outer orbit shows the web stack used to ship this
+// portfolio (React, Vite, Three.js, TypeScript, Git, Tailwind).
+const primaryStack = [
+  "python",
+  "pytorch",
+  "numpy",
+  "opencv",
+  "latex",
+];
+
+const secondaryStack = [
+  "react",
+  "typescript",
+  "vitejs",
+  "threejs",
+  "tailwindcss",
+  "git",
+  "javascript",
+];
+
 export function Frameworks() {
-  const skills = [
-    "python",
-    "javascript",
-    "html5",
-    "css3",
-    "typescript",
-    "matlab",
-    "scilab",
-    "lua",
-    "nodejs",
-    "angular",
-    "flask",
-    "git",
-    "latex",
-  ];
   return (
     <div className="relative flex h-[15rem] w-full flex-col items-center justify-center">
       <OrbitingCircles iconSize={40}>
-        {skills.map((skill, index) => (
-          <Icon key={index} src={`assets/logos/${skill}.svg`} />
+        {primaryStack.map((skill) => (
+          <Icon key={skill} src={`assets/logos/${skill}.svg`} alt={skill} />
         ))}
       </OrbitingCircles>
       <OrbitingCircles iconSize={25} radius={100} reverse speed={2}>
-        {skills.reverse().map((skill, index) => (
-          <Icon key={index} src={`assets/logos/${skill}.svg`} />
+        {secondaryStack.map((skill) => (
+          <Icon key={skill} src={`assets/logos/${skill}.svg`} alt={skill} />
         ))}
       </OrbitingCircles>
     </div>
   );
 }
 
-const Icon = ({ src }) => (
-  <img src={src} className="duration-200 rounded-sm hover:scale-110" />
+const Icon = ({ src, alt }) => (
+  <img
+    src={src}
+    alt={alt}
+    className="duration-200 rounded-sm hover:scale-110"
+  />
 );

@@ -19,4 +19,15 @@ i18n
         }
     });
 
+// Keep <html lang="..."> in sync with the active language so our CSS
+// font-stack switch (html[lang="th"] → Noto Sans Thai) takes effect.
+const syncHtmlLang = (lng) => {
+    if (typeof document !== 'undefined' && lng) {
+        document.documentElement.lang = lng.startsWith('th') ? 'th' : 'en';
+    }
+};
+
+syncHtmlLang(i18n.language);
+i18n.on('languageChanged', syncHtmlLang);
+
 export default i18n;

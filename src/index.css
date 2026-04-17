@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Noto+Sans+Thai:wght@300..800&display=swap");
 @import "tailwindcss";
 @theme {
   --color-primary: #030412;
@@ -50,10 +50,22 @@
 @layer base {
   body {
     background: #030412;
-    font-family: "Funnel Display", sans-serif;
+    /* Funnel Display for Latin + Noto Sans Thai for Thai characters.
+       Browser picks per-glyph via Noto's Thai unicode-range, so vowels and
+       tone marks stack correctly on mobile (Funnel Display has no Thai
+       coverage so fallback was broken before). */
+    font-family: "Funnel Display", "Noto Sans Thai", sans-serif;
     color: white;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    /* Give Thai text a bit more line-height so tone marks don't clip. */
+    line-height: 1.55;
+  }
+
+  /* Thai-only tweak: when page lang is set to Thai, prefer Noto Sans Thai
+     first so even Latin-only UI copy matches the Thai weight visually. */
+  html[lang="th"] body {
+    font-family: "Noto Sans Thai", "Funnel Display", sans-serif;
   }
 }
 
