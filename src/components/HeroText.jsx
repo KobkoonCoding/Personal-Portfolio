@@ -30,14 +30,14 @@ const CTARow = ({ ctaPrimary, ctaSecondary, size = "md" }) => {
       <a
         href="#research"
         onClick={(e) => scrollToId(e, "research")}
-        className={`${base} bg-sand text-primary hover:bg-white`}
+        className={`${base} bg-sand text-primary hover:bg-white shadow-lg shadow-black/30`}
       >
         {ctaPrimary} →
       </a>
       <a
         href="#contact"
         onClick={(e) => scrollToId(e, "contact")}
-        className={`${base} border border-sand/40 text-sand hover:border-white hover:text-white`}
+        className={`${base} border border-sand/60 text-sand bg-primary/40 backdrop-blur-sm hover:border-white hover:text-white`}
       >
         {ctaSecondary}
       </a>
@@ -59,8 +59,14 @@ const HeroText = () => {
   const ctaPrimary = t("hero.ctaPrimary");
   const ctaSecondary = t("hero.ctaSecondary");
 
+  // Text shadow / scrim utility — keeps Hero copy legible against the 3D
+  // astronaut background on any viewport. Used on mobile where the canvas
+  // otherwise competes with text colors.
+  const mobileReadable =
+    "[text-shadow:0_2px_10px_rgba(3,4,18,0.9),0_1px_3px_rgba(3,4,18,0.95)]";
+
   return (
-    <div className="z-10 mt-20 text-center md:mt-40 md:text-left rounded-3xl bg-clip-text">
+    <div className="relative z-10 mt-20 text-center md:mt-40 md:text-left rounded-3xl bg-clip-text">
       {/* Desktop */}
       <div className="flex-col hidden md:flex c-space">
         <motion.h1
@@ -111,9 +117,15 @@ const HeroText = () => {
       </div>
 
       {/* Mobile */}
-      <div className="flex flex-col md:hidden">
+      <div className="relative flex flex-col md:hidden px-1">
+        {/* Dark scrim behind text so Hero copy stays legible over the 3D astronaut */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -inset-x-4 -inset-y-4 -z-10 rounded-3xl bg-gradient-to-b from-primary/85 via-primary/70 to-primary/40 blur-sm"
+        />
+
         <motion.h1
-          className="text-3xl font-medium mb-2"
+          className={`text-2xl sm:text-3xl font-semibold mb-2 text-white break-words leading-snug ${mobileReadable}`}
           variants={variants}
           initial="hidden"
           animate="visible"
@@ -123,7 +135,7 @@ const HeroText = () => {
         </motion.h1>
 
         <motion.p
-          className="text-2xl font-semibold text-neutral-300 mb-4"
+          className={`text-lg sm:text-xl font-semibold text-white/90 mb-4 leading-snug ${mobileReadable}`}
           variants={variants}
           initial="hidden"
           animate="visible"
@@ -132,7 +144,7 @@ const HeroText = () => {
           {t("hero.identity")}
         </motion.p>
 
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-center text-center">
           <motion.div
             variants={variants}
             initial="hidden"
@@ -141,12 +153,12 @@ const HeroText = () => {
           >
             <FlipWords
               words={words}
-              className="font-black text-white text-5xl"
+              className={`font-black text-white text-4xl sm:text-5xl ${mobileReadable}`}
             />
           </motion.div>
 
           <motion.p
-            className="text-base text-neutral-400 max-w-md mt-4 leading-relaxed"
+            className={`text-base text-white/85 max-w-md mt-4 leading-relaxed ${mobileReadable}`}
             variants={variants}
             initial="hidden"
             animate="visible"
