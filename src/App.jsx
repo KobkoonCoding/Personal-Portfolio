@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
@@ -42,6 +43,9 @@ const App = () => {
         <Route path="/admin" element={<Dashboard />} />
       </Routes>
       <Footer />
+      {/* Vercel Web Analytics — logs pageviews + unique visitors.
+          Only activates on production (Vercel deployments), silent in dev. */}
+      <Analytics />
     </div>
   );
 };
